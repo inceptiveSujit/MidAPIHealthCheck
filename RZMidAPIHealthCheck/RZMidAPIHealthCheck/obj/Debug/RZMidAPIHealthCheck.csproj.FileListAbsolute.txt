@@ -1,0 +1,9 @@
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe.config
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.pdb
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\System.Json.dll
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\System.Json.xml
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.exe
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.pdb
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.ProjectInstaller.resources
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csproj.GenerateResource.Cache

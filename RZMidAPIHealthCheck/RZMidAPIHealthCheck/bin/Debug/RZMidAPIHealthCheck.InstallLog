@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.InstallLog
+   assemblypath = C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe
+Installing service RZMidAPIHealthCheck...
+Service RZMidAPIHealthCheck has been successfully installed.
+Creating EventLog source RZMidAPIHealthCheck in log Application...
+Committing assembly 'C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.InstallLog
+   assemblypath = C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe
