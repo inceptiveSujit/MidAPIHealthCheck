@@ -58,7 +58,7 @@ namespace RZMidAPIHealthCheck
                 var res = response.Content.ReadAsStringAsync();
                 var root = JsonValue.Parse(res.Result);
                 string status = root["StillAlive"].ToString();
-                if (status == "yes")
+                if (status.Replace("\"", "") == "yes")
                 {
                     Library.WriteErrorLog("The middleware server " + stillaliveOne + "heartbeat/v1/stillalive is live. Server status is " + status);
                 }
@@ -75,7 +75,7 @@ namespace RZMidAPIHealthCheck
                 var read = resp.Content.ReadAsStringAsync();
                 var parse = JsonValue.Parse(read.Result);
                 string statusTwo = parse["StillAlive"].ToString();
-                if (statusTwo == "yes")
+                if (statusTwo.Replace("\"", "") == "yes")
                 {
                     Library.WriteErrorLog("The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is live. Server status is " + status);
                 }
@@ -85,7 +85,7 @@ namespace RZMidAPIHealthCheck
                     Library.WriteErrorLog("The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is down. Server status is " + status);
                 }
 
-                if ((status != "yes") || (statusTwo != "yes"))
+                if ((status.Replace("\"", "") != "yes") || (statusTwo.Replace("\"", "") != "yes"))
                 {
                     //SCHEDULE EMAIL
                     SqlConnection conn = new SqlConnection(conString);
