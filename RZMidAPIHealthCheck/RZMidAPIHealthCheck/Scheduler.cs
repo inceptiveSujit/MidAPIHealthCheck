@@ -14,7 +14,6 @@ namespace RZMidAPIHealthCheck
 {
     public partial class Scheduler : ServiceBase
     {
-        //string SystemURL = ConfigurationManager.AppSettings["SystemURL"].ToString();
         private Timer timer = null;
         public Scheduler()
         {
@@ -28,7 +27,6 @@ namespace RZMidAPIHealthCheck
             this.timer.Interval = 60000; // 60 seconds
             this.timer.Elapsed += new System.Timers.ElapsedEventHandler(this.timer_Tick);
             timer.Enabled = true;
-            Library.WriteErrorLog("The job was run on " + DateTime.Now);
         }
 
         public void timer_Tick(object sender, ElapsedEventArgs args)
@@ -58,14 +56,9 @@ namespace RZMidAPIHealthCheck
                 var res = response.Content.ReadAsStringAsync();
                 var root = JsonValue.Parse(res.Result);
                 string status = root["StillAlive"].ToString();
-                if (status.Replace("\"", "") == "yes")
-                {
-                    Library.WriteErrorLog("The middleware server " + stillaliveOne + "heartbeat/v1/stillalive is live. Server status is " + status);
-                }
-                else
+                if (status.Replace("\"", "") != "yes")
                 {
                     strEmail = strEmail + "MESSAGES: The middleware server " + stillaliveOne + "heartbeat/v1/stillalive is down. \n";
-                    Library.WriteErrorLog("The middleware server " + stillaliveOne + "heartbeat/v1/stillalive is down. Server status is " + status);
                 }
 
                 //Call stillaliveTwo endpoint
@@ -75,14 +68,9 @@ namespace RZMidAPIHealthCheck
                 var read = resp.Content.ReadAsStringAsync();
                 var parse = JsonValue.Parse(read.Result);
                 string statusTwo = parse["StillAlive"].ToString();
-                if (statusTwo.Replace("\"", "") == "yes")
-                {
-                    Library.WriteErrorLog("The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is live. Server status is " + status);
-                }
-                else
+                if (statusTwo.Replace("\"", "") != "yes")
                 {
                     strEmail = strEmail + "MESSAGES: The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is down. \n";
-                    Library.WriteErrorLog("The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is down. Server status is " + status);
                 }
 
                 if ((status.Replace("\"", "") != "yes") || (statusTwo.Replace("\"", "") != "yes"))
@@ -111,15 +99,12 @@ namespace RZMidAPIHealthCheck
                 cmd.Parameters.Add("@Email_Body", SqlDbType.VarChar).Value = strEmail;
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
-                Library.WriteErrorLog("The job failed. Exception occured. " + ex);
             }
         }
 
         protected override void OnStop()
         {
             timer.Enabled = false;
-            Library.WriteErrorLog("RZWindows service stopped");
         }
     }
 }

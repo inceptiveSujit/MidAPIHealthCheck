@@ -7,3 +7,6 @@ C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHe
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.pdb
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.ProjectInstaller.resources
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csproj.GenerateResource.Cache
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\log4net.dll
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\log4net.xml
+C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csprojResolveAssemblyReference.cache
