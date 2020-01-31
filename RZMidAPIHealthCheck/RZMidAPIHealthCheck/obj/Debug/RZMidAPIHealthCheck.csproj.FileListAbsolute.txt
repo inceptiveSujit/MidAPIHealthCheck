@@ -10,3 +10,13 @@ C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHe
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\log4net.dll
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\log4net.xml
 C:\Shital Workspace\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csprojResolveAssemblyReference.cache
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe.config
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.exe
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\RZMidAPIHealthCheck.pdb
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\System.Json.dll
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\bin\Debug\System.Json.xml
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.ProjectInstaller.resources
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csproj.GenerateResource.Cache
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.exe
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.pdb
+C:\Shital Workspace\RZ_App\RZMidAPIHealthCheck\RZMidAPIHealthCheck\obj\Debug\RZMidAPIHealthCheck.csprojResolveAssemblyReference.cache

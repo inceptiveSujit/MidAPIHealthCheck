@@ -8,7 +8,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Json;
 using System.Data.SqlClient;
-
+using System.Collections.Specialized;
+using System.Collections.Generic;
 
 namespace RZMidAPIHealthCheck
 {
@@ -32,48 +33,41 @@ namespace RZMidAPIHealthCheck
         public void timer_Tick(object sender, ElapsedEventArgs args)
         {
             string strEmail = "";
-            string stillaliveOne = ConfigurationManager.AppSettings["stillaliveone"].ToString();
-            string stillaliveTwo = ConfigurationManager.AppSettings["stillalivetwo"].ToString();
             string conString = ConfigurationManager.AppSettings["PortalEmailerConnectionString"].ToString();
-
-            // Create an HttpClient instance
-            HttpClient clientOne = new HttpClient();
-            clientOne.BaseAddress = new Uri(stillaliveOne);
-
-            strEmail = "------------------------------------------------------------ \n";
-
-            strEmail = strEmail + "MidAPI STATUS \n";
-
-            strEmail = strEmail + "------------------------------------------------------------\n\n";
-
-            strEmail = strEmail + "JOB RUN:  " + DateTime.Now + "\n";
-
-            strEmail = strEmail + "STATUS:   Failed \n";
+            string[] urlArr = ConfigurationManager.AppSettings["stillalive"].Split(';');
+            
             //Call stillaliveOne endpoint
             try
             {
-                HttpResponseMessage response = clientOne.GetAsync("heartbeat/v1/stillalive").Result;
-                var res = response.Content.ReadAsStringAsync();
-                var root = JsonValue.Parse(res.Result);
-                string status = root["StillAlive"].ToString();
-                if (status.Replace("\"", "") != "yes")
+                foreach (var url in urlArr)
                 {
-                    strEmail = strEmail + "MESSAGES: The middleware server " + stillaliveOne + "heartbeat/v1/stillalive is down. \n";
-                }
+                    // Create an HttpClient instance
+                    HttpClient client = new HttpClient();
+                    HttpResponseMessage response = client.GetAsync(url).Result;
+                    var res = JsonValue.Parse(response.Content.ReadAsStringAsync().Result);
+                    string status = res["StillAlive"].ToString();
+                    
+                    if (status.Replace("\"", "")  != "yes")
+                    {
+                        //Check if email header is already present in string email
+                        if (strEmail == "")
+                        {
+                            strEmail = "------------------------------------------------------------ \n";
 
-                //Call stillaliveTwo endpoint
-                HttpClient clientTwo = new HttpClient();
-                clientTwo.BaseAddress = new Uri(stillaliveTwo);
-                HttpResponseMessage resp = clientTwo.GetAsync("heartbeat/v1/stillalive").Result;
-                var read = resp.Content.ReadAsStringAsync();
-                var parse = JsonValue.Parse(read.Result);
-                string statusTwo = parse["StillAlive"].ToString();
-                if (statusTwo.Replace("\"", "") != "yes")
-                {
-                    strEmail = strEmail + "MESSAGES: The middleware server " + stillaliveTwo + "heartbeat/v1/stillalive is down. \n";
-                }
+                            strEmail = strEmail + "MidAPI STATUS \n";
 
-                if ((status.Replace("\"", "") != "yes") || (statusTwo.Replace("\"", "") != "yes"))
+                            strEmail = strEmail + "------------------------------------------------------------\n\n";
+
+                            strEmail = strEmail + "JOB RUN:  " + DateTime.Now + "\n";
+
+                            strEmail = strEmail + "STATUS:   Failed \n";
+                        }
+                        strEmail = strEmail + "MESSAGES: The middleware server " + url + " is down. \n";
+                    }
+                }
+                
+                //Check if server is live and schedule email
+                if (strEmail != "")
                 {
                     //SCHEDULE EMAIL
                     SqlConnection conn = new SqlConnection(conString);
