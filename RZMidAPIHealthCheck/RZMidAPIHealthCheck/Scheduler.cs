@@ -83,6 +83,19 @@ namespace RZMidAPIHealthCheck
             }
             catch (Exception ex)
             {
+                //Check if email header is already present in string email
+                if (strEmail == "")
+                {
+                    strEmail = "------------------------------------------------------------ \n";
+
+                    strEmail = strEmail + "MidAPI STATUS \n";
+
+                    strEmail = strEmail + "------------------------------------------------------------\n\n";
+
+                    strEmail = strEmail + "JOB RUN:  " + DateTime.Now + "\n";
+
+                    strEmail = strEmail + "STATUS:   Failed \n";
+                }
                 strEmail = strEmail + "MESSAGES: The job failed. Exception occured. " + ex + " \n";
                 SqlConnection conn = new SqlConnection(conString);
                 conn.Open();
