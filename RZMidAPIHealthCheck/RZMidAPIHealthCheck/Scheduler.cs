@@ -44,10 +44,8 @@ namespace RZMidAPIHealthCheck
                     // Create an HttpClient instance
                     HttpClient client = new HttpClient();
                     HttpResponseMessage response = client.GetAsync(url).Result;
-                    var res = JsonValue.Parse(response.Content.ReadAsStringAsync().Result);
-                    string status = res["StillAlive"].ToString();
-                    
-                    if (status.Replace("\"", "")  != "yes")
+
+                    if (!response.IsSuccessStatusCode)
                     {
                         //Check if email header is already present in string email
                         if (strEmail == "")
@@ -63,6 +61,28 @@ namespace RZMidAPIHealthCheck
                             strEmail = strEmail + "STATUS:   Failed \n";
                         }
                         strEmail = strEmail + "MESSAGES: The middleware server " + url + " is down. \n";
+                    }
+                    else
+                    {
+                        var res = JsonValue.Parse(response.Content.ReadAsStringAsync().Result);
+                        string status = res["StillAlive"].ToString();
+                        if (status.Replace("\"", "") != "yes")
+                        {
+                            //Check if email header is already present in string email
+                            if (strEmail == "")
+                            {
+                                strEmail = "------------------------------------------------------------ \n";
+
+                                strEmail = strEmail + "MidAPI STATUS \n";
+
+                                strEmail = strEmail + "------------------------------------------------------------\n\n";
+
+                                strEmail = strEmail + "JOB RUN:  " + DateTime.Now + "\n";
+
+                                strEmail = strEmail + "STATUS:   Failed \n";
+                            }
+                            strEmail = strEmail + "MESSAGES: The middleware server " + url + " is down. \n";
+                        }
                     }
                 }
                 
